@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIX & GO - الحل الشامل لسيارتك في مصر</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'brand-dark-blue': '#003366',
+              'brand-lemon-yellow': '#FFD700',
+              'brand-gray': { // Added shades of gray for more control
+                  DEFAULT: '#6b7280', // text-gray-500
+                  light: '#f3f4f6',  // bg-gray-100
+                  medium: '#d1d5db', // border-gray-300
+                  dark: '#374151'   // bg-gray-700
+              }
+            },
+            fontFamily: {
+              sans: ['Cairo', 'sans-serif'],
+            }
+          }
+        }
+      }
+    </script>
+
+    <style type="text/tailwindcss">
+      body {
+        @apply text-brand-gray leading-relaxed; /* Default text color */
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      /* Scroll Animation Classes */
+      .scroll-animate {
+        @apply opacity-0 transition-all duration-700 ease-out;
+      }
+      .scroll-animate.fade-in {
+        @apply translate-y-8; /* Start slightly lower */
+      }
+      .scroll-animate.visible {
+        @apply opacity-100 translate-y-0;
+      }
+       /* Subtle hover effect for cards */
+      .service-card:hover {
+        @apply shadow-xl scale-[1.02] border-brand-lemon-yellow;
+      }
+       /* Subtle hover effect for buttons */
+       .btn-hover-effect {
+         @apply transition-all duration-300 ease-out;
+       }
+       .btn-hover-effect:hover {
+          @apply brightness-110 scale-[1.03];
+       }
+
+    </style>
+</head>
+<body class="font-sans bg-white overflow-x-hidden">
+
+    <header class="sticky top-0 z-50 bg-white shadow-sm border-b border-brand-gray-medium">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" id="logo-link" class="text-2xl font-bold cursor-pointer whitespace-nowrap" aria-label="FIX & GO Home">
+                <span class="text-brand-dark-blue inline-block">GO</span><span class="text-brand-lemon-yellow inline-block">&FIX</span>
+            </a>
+
+            <div class="hidden sm:flex items-center space-x-6 rtl:space-x-reverse text-brand-gray-dark">
+                <a href="#services" class="nav-link hover:text-brand-dark-blue transition-colors">خدماتنا</a>
+                <a href="#about" class="nav-link hover:text-brand-dark-blue transition-colors">عن التطبيق</a>
+                <a href="#how-it-works" class="nav-link hover:text-brand-dark-blue transition-colors">كيف يعمل</a>
+            </div>
+
+            <div class="hidden sm:block">
+                <a href="#download" class="nav-link btn-hover-effect bg-brand-dark-blue text-white px-5 py-2 rounded-md font-semibold">
+                    حمّل التطبيق
+                </a>
+            </div>
+
+            <div class="sm:hidden">
+                <button id="mobile-menu-button" aria-label="فتح القائمة" aria-expanded="false" class="text-brand-gray-dark focus:outline-none p-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+
+        <div id="mobile-menu" class="hidden sm:hidden absolute top-full left-0 right-0 bg-white shadow-lg border-t border-brand-gray-medium p-4 z-40">
+            <nav class="flex flex-col space-y-3 text-center">
+                <a href="#services" class="nav-link mobile-menu-link block py-2 text-brand-gray-dark hover:text-brand-dark-blue">خدماتنا</a>
+                <a href="#about" class="nav-link mobile-menu-link block py-2 text-brand-gray-dark hover:text-brand-dark-blue">عن التطبيق</a>
+                <a href="#how-it-works" class="nav-link mobile-menu-link block py-2 text-brand-gray-dark hover:text-brand-dark-blue">كيف يعمل</a>
+                <a href="#download" class="nav-link mobile-menu-link btn-hover-effect mt-4 block bg-brand-dark-blue text-white px-5 py-2 rounded-md font-semibold">
+                     حمّل التطبيق
+                </a>
+            </nav>
+        </div>
+    </header>
+    <section id="hero" class="bg-gradient-to-br from-brand-dark-blue via-blue-800 to-gray-900 text-white pt-24 pb-20 md:pt-32 md:pb-28 overflow-hidden"> <div class="container mx-auto px-4 grid lg:grid-cols-5 gap-12 items-center"> <div class="lg:col-span-3 text-center lg:text-right scroll-animate fade-in">
+                <h1 class="text-4xl sm:text-5xl xl:text-6xl font-extrabold mb-5 leading-tight">
+                    <span class="text-brand-lemon-yellow">FIX & GO:</span> الحل الشامل والموثوق لسيارتك في مصر
+                </h1>
+                <p class="text-lg md:text-xl text-gray-200 mb-10 max-w-2xl mx-auto lg:mx-0">
+                    وداعاً لمشاكل البحث عن خدمة سيارات! تطبيق FIX & GO يوصلك بأفضل مقدمي الخدمات المعتمدين، من الصيانة الدورية وقطع الغيار إلى خدمات الطوارئ والإنقاذ، كل ذلك بلمسة زر وبأسعار تنافسية.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+                    <a href="#download" class="nav-link btn-hover-effect bg-brand-lemon-yellow text-brand-dark-blue px-8 py-3 rounded-lg text-lg font-semibold shadow-lg inline-block">
+                        حمّل التطبيق الآن
+                    </a>
+                    <a href="#services" class="nav-link btn-hover-effect bg-white/90 text-brand-dark-blue px-8 py-3 rounded-lg text-lg font-semibold shadow-lg inline-block backdrop-blur-sm">
+                        اكتشف خدماتنا
+                    </a>
+                </div>
+            </div>
+
+            <div class="lg:col-span-2 flex justify-center lg:justify-start scroll-animate fade-in" style="transition-delay: 150ms;">
+                <img src="https://placehold.co/350x700/E2E8F0/003366?text=App+Interface" alt="واجهة تطبيق FIX & GO" class="rounded-2xl shadow-xl transform lg:rotate-[4deg] max-w-xs lg:max-w-sm border-4 border-white/50">
+                </div>
+        </div>
+    </section>
+    <section id="services" class="py-16 lg:py-20 bg-brand-gray-light"> <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto text-center mb-12 lg:mb-16 scroll-animate fade-in">
+                 <h2 class="text-3xl lg:text-4xl font-bold text-brand-dark-blue mb-4">
+                    كل ما تحتاجه سيارتك في تطبيق واحد
+                 </h2>
+                 <p class="text-brand-gray text-lg">
+                    نقدم مجموعة واسعة من الخدمات لتغطية جميع احتياجات سيارتك بأعلى جودة وموثوقية.
+                 </p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+                <div class="service-card bg-white p-6 rounded-lg shadow-lg border border-transparent scroll-animate fade-in">
+                    <div class="mb-4 inline-block p-3 bg-yellow-100 text-brand-lemon-yellow rounded-full">
+                       <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-brand-dark-blue">صيانة وإصلاح</h3>
+                    <p class="text-brand-gray text-sm">نصلك بأفضل ورش الصيانة ومراكز الخدمة المعتمدة لجميع أنواع السيارات وإصلاح الأعطال بكفاءة.</p>
+                </div>
+                <div class="service-card bg-white p-6 rounded-lg shadow-lg border border-transparent scroll-animate fade-in" style="transition-delay: 100ms;">
+                    <div class="mb-4 inline-block p-3 bg-yellow-100 text-brand-lemon-yellow rounded-full">
+                       <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-brand-dark-blue">سوق قطع الغيار</h3>
+                    <p class="text-brand-gray text-sm">تصفح واطلب قطع الغيار الأصلية أو البديلة المضمونة بأسعار تنافسية وتوصيل سريع.</p>
+                </div>
+                 <div class="service-card bg-white p-6 rounded-lg shadow-lg border border-transparent scroll-animate fade-in" style="transition-delay: 200ms;">
+                    <div class="mb-4 inline-block p-3 bg-yellow-100 text-brand-lemon-yellow rounded-full">
+                       <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-brand-dark-blue">خدمات الطوارئ</h3>
+                    <p class="text-brand-gray text-sm">لا تقلق على الطريق! اطلب ونش إنقاذ، تغيير بطارية، أو إصلاح إطارات بلمسة زر 24/7.</p>
+                </div>
+                <div class="service-card bg-white p-6 rounded-lg shadow-lg border border-transparent scroll-animate fade-in" style="transition-delay: 300ms;">
+                   <div class="mb-4 inline-block p-3 bg-yellow-100 text-brand-lemon-yellow rounded-full">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 10V6a3 3 0 013-3v0a3 3 0 013 3v4"></path></svg>
+                     </div>
+                    <h3 class="text-xl font-semibold mb-2 text-brand-dark-blue">بيع وشراء السيارات</h3>
+                    <p class="text-brand-gray text-sm">اعرض سيارتك للبيع أو ابحث عن سيارة أحلامك المستعملة مع خدمات فحص موثوقة.</p>
+                </div>
+                <div class="service-card bg-white p-6 rounded-lg shadow-lg border border-transparent scroll-animate fade-in" style="transition-delay: 400ms;">
+                  <div class="mb-4 inline-block p-3 bg-yellow-100 text-brand-lemon-yellow rounded-full">
+                       <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"></path></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-brand-dark-blue">مزادات وتأجير</h3>
+                    <p class="text-brand-gray text-sm">شارك في مزادات سيارات حصرية أو استأجر سيارة تناسب احتياجاتك بسهولة ويسر.</p>
+                </div>
+                <div class="service-card bg-white p-6 rounded-lg shadow-lg border border-transparent scroll-animate fade-in" style="transition-delay: 500ms;">
+                   <div class="mb-4 inline-block p-3 bg-yellow-100 text-brand-lemon-yellow rounded-full">
+                       <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" clip-rule="evenodd" /></svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2 text-brand-dark-blue">ثقة وأمان</h3>
+                    <p class="text-brand-gray text-sm">نضمن جودة الخدمات وموثوقية الشركاء مع نظام تقييمات شفاف ودعم فني متكامل.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="about" class="py-16 lg:py-20 bg-white"> <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+             <div class="order-last lg:order-first scroll-animate fade-in">
+                <img src="https://placehold.co/600x450/003366/FFD700?text=FIX+%26+GO+Vision" alt="رؤية تطبيق FIX & GO" class="rounded-lg shadow-lg max-w-full h-auto mx-auto border-4 border-brand-gray-light">
+            </div>
+            <div class="scroll-animate fade-in" style="transition-delay: 150ms;">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-6 text-brand-dark-blue">مهمتنا: إعادة تعريف تجربة العناية بالسيارة</h2>
+                <p class="text-brand-gray mb-6 text-lg">
+                   نحن في FIX & GO نؤمن بأن امتلاك سيارة يجب أن يكون تجربة مريحة وخالية من القلق. لذلك، قمنا ببناء منصة تكنولوجية تربط مالكي السيارات بأفضل مقدمي الخدمات في مصر، مع التركيز على الشفافية، الجودة، والسرعة. هدفنا هو أن نصبح مساعدك الشخصي الموثوق لكل ما يتعلق بسيارتك.
+                </p>
+                <dl class="space-y-6 mt-8">
+                    <div class="flex items-start">
+                        <dt class="flex-shrink-0">
+                            <div class="flex items-center justify-center h-10 w-10 rounded-full bg-brand-dark-blue text-brand-lemon-yellow">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                             </div>
+                        </dt>
+                        <dd class="ms-4">
+                            <h4 class="text-lg font-semibold text-brand-dark-blue">جودة يمكنك الوثوق بها</h4>
+                            <p class="text-brand-gray text-sm">نتعاون فقط مع مراكز خدمة وورش معتمدة ومُقيّمة بعناية لضمان حصولك على أفضل خدمة ممكنة لسيارتك.</p>
+                        </dd>
+                    </div>
+                     <div class="flex items-start">
+                        <dt class="flex-shrink-0">
+                           <div class="flex items-center justify-center h-10 w-10 rounded-full bg-brand-dark-blue text-brand-lemon-yellow">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+                            </div>
+                        </dt>
+                        <dd class="ms-4">
+                            <h4 class="text-lg font-semibold text-brand-dark-blue">سهولة ويسر في الاستخدام</h4>
+                            <p class="text-brand-gray text-sm">واجهة تطبيق بسيطة وبديهية تمكنك من طلب الخدمة، مقارنة العروض، وتتبع حالة الطلب ببضع نقرات فقط.</p>
+                        </dd>
+                    </div>
+                     <div class="flex items-start">
+                         <dt class="flex-shrink-0">
+                           <div class="flex items-center justify-center h-10 w-10 rounded-full bg-brand-dark-blue text-brand-lemon-yellow">
+                               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                            </div>
+                        </dt>
+                        <dd class="ms-4">
+                            <h4 class="text-lg font-semibold text-brand-dark-blue">تغطية شاملة ومتكاملة</h4>
+                            <p class="text-brand-gray text-sm">نوفر لك كل ما تحتاجه سيارتك تحت سقف واحد، من الصيانة الدورية إلى الخدمات المتخصصة والطوارئ.</p>
+                        </dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+    </section>
+     <section id="how-it-works" class="py-16 lg:py-20 bg-brand-gray-light"> <div class="container mx-auto px-4">
+             <div class="max-w-3xl mx-auto text-center mb-16 scroll-animate fade-in">
+                 <h2 class="text-3xl lg:text-4xl font-bold text-brand-dark-blue mb-4">
+                    تجربة الخدمة في 3 خطوات بسيطة
+                 </h2>
+                 <p class="text-brand-gray text-lg">
+                    صممنا التطبيق ليكون سهل الاستخدام قدر الإمكان، لتحصل على الخدمة التي تحتاجها بسرعة وسهولة.
+                 </p>
+            </div>
+            <div class="relative max-w-4xl mx-auto">
+                 <div class="hidden md:block absolute top-6 left-0 right-0 h-1 w-full" aria-hidden="true">
+                     <div class="bg-gray-200 h-0.5 w-full"></div>
+                     <div class="bg-brand-lemon-yellow h-1 w-2/3 absolute left-1/2 top-0 transform -translate-x-1/2"></div>
+                 </div>
+
+                 <div class="relative flex flex-col md:flex-row justify-between items-start md:items-start gap-12 md:gap-8"> <div class="flex flex-col items-center text-center w-full md:w-1/3 scroll-animate fade-in">
+                        <div class="relative z-10 bg-brand-dark-blue text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mb-6 border-4 border-brand-gray-light shadow-lg">1</div>
+                        <h3 class="text-xl font-semibold mb-2 text-brand-dark-blue">حمّل وسجّل</h3>
+                        <p class="text-brand-gray px-2 text-sm">قم بتحميل تطبيق FIX & GO مجانًا من متجر التطبيقات وأنشئ حسابك الشخصي في أقل من دقيقة.</p>
+                    </div>
+
+                    <div class="flex flex-col items-center text-center w-full md:w-1/3 scroll-animate fade-in" style="transition-delay: 150ms;">
+                         <div class="relative z-10 bg-brand-dark-blue text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mb-6 border-4 border-brand-gray-light shadow-lg">2</div>
+                        <h3 class="text-xl font-semibold mb-2 text-brand-dark-blue">اطلب الخدمة</h3>
+                        <p class="text-brand-gray px-2 text-sm">تصفح قائمة الخدمات، اختر ما تحتاجه، حدد موقعك وتفاصيل سيارتك، ثم استعرض عروض الأسعار من مقدمي الخدمة المتاحين.</p>
+                    </div>
+
+                    <div class="flex flex-col items-center text-center w-full md:w-1/3 scroll-animate fade-in" style="transition-delay: 300ms;">
+                        <div class="relative z-10 bg-brand-dark-blue text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mb-6 border-4 border-brand-gray-light shadow-lg">3</div>
+                        <h3 class="text-xl font-semibold mb-2 text-brand-dark-blue">اختر واستمتع!</h3>
+                        <p class="text-brand-gray px-2 text-sm">اختر العرض الأنسب لك، تواصل مع مقدم الخدمة، تابع حالة طلبك، واستمتع بخدمة ممتازة لسيارتك وأنت مرتاح البال.</p>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </section>
+    <section id="download" class="bg-brand-lemon-yellow py-16 lg:py-20">
+        <div class="container mx-auto px-4 text-center scroll-animate fade-in">
+            <h2 class="text-3xl md:text-4xl font-bold text-brand-dark-blue mb-4">
+                هل أنت جاهز لتجربة FIX & GO؟
+            </h2>
+            <p class="text-lg text-brand-gray-dark mb-8 max-w-xl mx-auto"> لا تتردد! حمّل التطبيق الآن مجانًا وانضم لمجتمع المستخدمين الراضين الذين يستمتعون براحة البال مع سياراتهم في مصر.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="#" target="_blank" rel="noopener noreferrer" class="btn-hover-effect bg-gray-900 text-white px-6 py-3 rounded-lg flex items-center space-x-2 rtl:space-x-reverse hover:bg-gray-800 shadow-md w-full sm:w-auto justify-center">
+                     <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M19.467 10.958c-.126.007-.252.007-.38.007-1.24 0-2.405-.364-3.42-1.002-.99-.626-1.938-1.528-2.672-2.514-.74-.992-1.26-2.11-1.432-3.276C11.44 3.162 11.43 1.956 12.035.92c.322-.55.79-1.02 1.38-1.33.005-.003.01-.006.015-.009H13.45c-.52.043-.996.32-1.32.75-.06.07-.115.14-.17.21-.493.62-.83 1.38-1.02 2.2-.19.82-.22 1.7-.1 2.5.12.8.4 1.55.8 2.2.4.65.9 1.23 1.5 1.7.6.47 1.26.85 2.04 1.1.78.25 1.6.38 2.48.38.06 0 .12-.002.18-.004.05-.002.1-.006.15-.01.38-.02.75-.07 1.1-.15.26-.06.5-.14.74-.24.05-.02.09-.04.14-.06.04-.01.09-.03.13-.05.26-.1.5-.24.73-.38.08-.05.15-.1.23-.15.1-.06.19-.13.28-.2.1-.07.19-.15.27-.23.18-.17.34-.37.47-.58.13-.21.23-.44.3-.68.04-.15.06-.3.07-.45.01-.2.01-.4.01-.6 0-.2-.004-.39-.01-.58-.01-.15-.03-.3-.06-.44-.03-.14-.07-.28-.12-.41-.05-.13-.1-.26-.17-.38-.07-.12-.14-.24-.23-.35-.09-.11-.18-.22-.29-.32-.1-.1-.22-.19-.34-.28-.12-.09-.25-.17-.38-.24-.13-.07-.27-.13-.41-.19-.14-.06-.29-.11-.44-.16-.15-.05-.3-.09-.46-.12-.16-.03-.32-.05-.48-.07-.17-.02-.34-.03-.51-.03zm-4.29 0c-.17 0-.34.01-.51.03-.16.02-.32.04-.48.07-.16.03-.31.07-.46.12-.15.05-.29.1-.44.16-.14.06-.28.12-.41.19-.13.07-.26.15-.38.24-.12.09-.24.18-.34.28-.11.1-.2.21-.29.32-.09.11-.16.23-.23.35-.07.12-.12.25-.17.38-.05.13-.09.27-.12.41-.03.14-.05.28-.06.44-.01.19-.01.38-.01.58 0 .2 0 .4.01.6.01.15.03.3.07.45.07.24.17.47.3.68.13.21.29.41.47.58.08.08.17.16.27.23.09.07.18.14.28.2.08.05.15.1.23.15.23.14.47.28.73.38.04.02.09.04.13.05.05.02.09.04.14.06.24.1.48.18.74.24.35.08.72.13 1.1.15.05.004.1.008.15.01.06.002.12.004.18.004.88 0 1.7-.13 2.48-.38.78-.25 1.44-.63 2.04-1.1.6-.47 1.1-.105 1.5-1.7.4-.65.68-1.4.8-2.2.12-.8.09-1.68-.1-2.5-.19-.82-.53-1.58-1.02-2.2-.06-.07-.11-.14-.17-.21-.324-.43-.8-.707-1.32-.75h-.015c.005.003.01.006.015.009.59.31 1.058.78 1.38 1.33.605 1.036.595 2.242.477 3.256-.172 1.166-.692 2.284-1.432 3.276-.734.986-1.682 1.888-2.672 2.514-1.015.638-2.18 1.002-3.42 1.002-.128 0-.254 0-.38-.007zM12 5.724a.685.685 0 01.686-.685.685.685 0 01.686.685.685.685 0 01-.686.685.685.685 0 01-.686-.685z"/></svg>
+                    <span>
+                        <span class="block text-xs">Download on the</span>
+                        <span class="block text-base font-semibold">App Store</span>
+                    </span>
+                </a>
+                <a href="#" target="_blank" rel="noopener noreferrer" class="btn-hover-effect bg-gray-900 text-white px-6 py-3 rounded-lg flex items-center space-x-3 rtl:space-x-reverse hover:bg-gray-800 shadow-md w-full sm:w-auto justify-center">
+                     <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M21.535 9.175l-3.648-3.648-8.697 8.697 3.648 3.648 8.697-8.697zM2.465 14.825l3.648 3.648 8.697-8.697-3.648-3.648L2.465 14.825zm7.29-11.17L8.08 5.33 4.43 1.683A1.46 1.46 0 015.495.617l4.26 3.038zm0 17.34l-1.675-1.675-3.65 3.647c.59.59 1.48.795 2.295.437l3.03-2.41zM14.825 2.465l-3.648 3.648 8.697 8.697 3.648-3.648L14.825 2.465zm3.04 17.27l-1.68 1.675 3.04 4.26a1.46 1.46 0 001.066-.937l-2.426-4.998z"/></svg>
+                    <span>
+                        <span class="block text-xs">GET IT ON</span>
+                        <span class="block text-base font-semibold">Google Play</span>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <footer class="bg-gray-900 text-gray-400 py-8">
+        <div class="container mx-auto px-4 text-center">
+             <div class="mb-4 flex flex-col sm:flex-row justify-center items-center gap-x-6 gap-y-2"> <a href="#" class="hover:text-white transition-colors text-sm">سياسة الخصوصية</a>
+                <a href="#" class="hover:text-white transition-colors text-sm">شروط الخدمة</a>
+                <a href="#" class="hover:text-white transition-colors text-sm">اتصل بنا</a>
+            </div>
+            <p class="text-sm">
+                &copy; <span id="current-year">2025</span> FIX & GO. جميع الحقوق محفوظة.
+            </p>
+        </div>
+    </footer>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+
+        // --- Dynamic Year Update ---
+        const yearSpan = document.getElementById('current-year');
+        if (yearSpan) { yearSpan.textContent = new Date().getFullYear(); }
+
+        // --- Mobile Menu Toggle ---
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuLinks = document.querySelectorAll('#mobile-menu .nav-link');
+        const body = document.body; // Get body element for potential overflow handling
+        if (menuButton && mobileMenu) {
+          menuButton.addEventListener('click', () => {
+            const isOpening = mobileMenu.classList.toggle('hidden');
+            menuButton.setAttribute('aria-expanded', !isOpening); // Toggle aria-expanded
+            // Optional: Prevent body scroll when menu is open
+            // body.style.overflow = isOpening ? '' : 'hidden';
+          });
+          mobileMenuLinks.forEach(link => {
+              link.addEventListener('click', () => {
+                  mobileMenu.classList.add('hidden');
+                  menuButton.setAttribute('aria-expanded', 'false');
+                  // body.style.overflow = ''; // Restore body scroll
+              });
+          });
+        }
+
+        // --- Smooth Scrolling ---
+        const headerElement = document.querySelector('header');
+        const navbarHeight = headerElement ? headerElement.offsetHeight : 70;
+        const scrollLinks = document.querySelectorAll('.nav-link, #logo-link');
+        scrollLinks.forEach(link => {
+          link.addEventListener('click', function (e) {
+            const hrefAttribute = this.getAttribute('href');
+            // Close mobile menu if open (needed for desktop links if window resized)
+             if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                 mobileMenu.classList.add('hidden');
+                 menuButton.setAttribute('aria-expanded', 'false');
+                 // body.style.overflow = ''; // Restore body scroll
+             }
+
+            if (hrefAttribute === '#') {
+              e.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+              return;
+            }
+            if (hrefAttribute && hrefAttribute.startsWith('#') && hrefAttribute.length > 1) {
+              try { // Add try-catch for robustness
+                const targetId = hrefAttribute.substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                  e.preventDefault();
+                  const targetPosition = targetElement.offsetTop - navbarHeight;
+                  window.scrollTo({
+                    top: targetPosition >= 0 ? targetPosition : 0,
+                    behavior: 'smooth'
+                  });
+                } else {
+                  console.warn('Smooth scroll target not found:', targetId); // Add warning
+                }
+              } catch (error) {
+                 console.error('Error during smooth scroll:', error); // Add error logging
+              }
+            }
+          });
+        });
+
+        // --- Scroll Animations (Intersection Observer) ---
+        const animatedElements = document.querySelectorAll('.scroll-animate');
+        if ("IntersectionObserver" in window) {
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Uncomment below to animate only once
+                        // observer.unobserve(entry.target);
+                    }
+                    // Optional: remove visible class if element leaves viewport (for re-animation)
+                    // else {
+                    //    entry.target.classList.remove('visible');
+                    // }
+                });
+            }, {
+                threshold: 0.15 // Trigger when 15% of the element is visible
+            });
+
+            animatedElements.forEach(el => {
+                el.classList.add('fade-in'); // Add initial animation state class
+                observer.observe(el);
+            });
+        } else {
+            // Fallback for older browsers: make elements visible directly
+            console.warn('IntersectionObserver not supported, animations disabled.');
+            animatedElements.forEach(el => {
+                el.classList.remove('opacity-0'); // Remove opacity if fallback needed
+            });
+        }
+
+      }); // End DOMContentLoaded listener
+    </script>
+    </body>
+</html>
